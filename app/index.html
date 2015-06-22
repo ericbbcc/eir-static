@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title>eir static</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <!--<meta name="viewport" content="width=device-width">-->
+    <meta content="initial-scale = 1.0, minimum-scale = 1.0, maximum-scale = 1.0, user-scalable = yes" name="viewport">
     <link rel="shortcut icon" href="/favicon.ico">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
@@ -23,26 +24,41 @@
 <body>
     <div class="container-fluid">
         <div class="row eir-home-header">
-            <div class="eir-brand text-right">
+            <div class="eir-brand">
                 <h1>
                     Morningside Community
                 </h1>
             </div>
+            <nav class="navbar navbar-default eir-nav" >
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed eir-nav-collapsed" data-target=".eir-mytags">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                </div>
+
+            </nav>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-offset-1 col-md-7">
+                <div class="col-md-offset-1 col-md-7 col-sm-7">
                     <div class="row">
                         <div class="row eir-options">
                             <div class="col-md-4">
                                 <i class="icon-comment icon-grey"><a>写说说</a></i>
-                                <i class="icon-link icon-grey"><a>推荐网页</a></i>
+                                <i class="icon-link icon-grey active"><a>推荐网页</a></i>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <form>
                             <div class="form-group">
+                                <input type="text" class="eir-recommend-link">
+                                <a class="btn btn-default eir-noradius eir-input-link">输入网址</a>
                                 <textarea class="eir-form-control" rows="3"></textarea>
                                 <div class="col-md-12 col-xs-12 eir-box1">
                                         <li class="icon-tags icon-grey">
@@ -62,7 +78,7 @@
                                 <img src="/images/pic1.jpeg">
                             </div>
                             <div class="eir-feed-name-group">
-                                <span class="eir-feed-name">Float.lu</span>
+                                <span class="eir-feed-name">Cheng</span>
                                 <span class="eir-feed-summary">Steven Gerrity CTO</span>
                             </div>
                         </div>
@@ -78,7 +94,9 @@
                         <div class="row eir-feed-options">
                             <li class="icon-comment icon-grey"><a>评论</a></li>
                             <li class="icon-thumbs-up icon-grey"><a>赞</a></li>
-                            <li class="icon-trash icon-grey"><a>删除</a></li>
+                            <li class="icon-trash icon-grey">
+                                <a data-toggle="popover" data-trigger="focus" role="button" tabindex="0" data-placement="bottom" data-container="body" >删除</a>
+                            </li>
                         </div>
                         <div class="row eir-feed-comments">
                             <input type="text" placeholder="我也说一句">
@@ -102,7 +120,9 @@
                         <div class="row eir-feed-options">
                             <li class="icon-comment icon-grey"><a>评论</a></li>
                             <li class="icon-thumbs-up icon-grey"><a>赞</a></li>
-                            <li class="icon-trash icon-grey"><a>删除</a></li>
+                            <li class="icon-trash icon-grey">
+                                <a data-toggle="popover" data-trigger="focus" role="button" tabindex="0" data-placement="bottom" data-container="body" >删除</a>
+                            </li>
                         </div>
                         <div class="row eir-feed-comments">
                             <input type="text" placeholder="我也说一句">
@@ -130,7 +150,9 @@
                         <div class="row eir-feed-options">
                             <li class="icon-comment icon-grey"><a>评论</a><span>1</span></li>
                             <li class="icon-thumbs-up icon-grey"><a>赞</a><span>6</span></li>
-                            <li class="icon-trash icon-grey"><a>删除</a></li>
+                            <li class="icon-trash icon-grey">
+                                <a data-toggle="popover" data-trigger="focus" role="button" tabindex="0" data-placement="bottom" data-container="body" >删除</a>
+                            </li>
                         </div>
                         <div class="row eir-feed-comments-item">
                             <div class="eir-feed-pic01">
@@ -141,7 +163,7 @@
                                     Cheng:I agree with this point, Focus, always focus</span>
                                 <span class="eir-feed-comments-item-content-time">
                                     <d>2015-06-15</d>
-                                    <a>删除</a>
+                                    <a data-toggle="popover" data-trigger="focus" role="button" tabindex="0" data-placement="bottom" data-container="body" >删除</a>
                                 </span>
                             </div>
                         </div>
@@ -154,7 +176,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="eir-home-right col-md-3">
+                <div class="eir-home-right col-md-3 col-sm-offset-1 col-sm-4">
                     <div class="row eir-profile">
                         <div class="eir-profile-head">
                             <div class="eir-feed-pic">
@@ -187,17 +209,34 @@
                     </div>
                     <div class="row eir-mytags">
                         <ul class="list-unstyled text-center">
-                            <li>互联网金融</li>
-                            <li>O2O</li>
-                            <li>互联网房地产</li>
-                            <li>互联网教育</li>
-                            <li>互联网医疗</li>
+                            <li><label>互联网金融</label></li>
+                            <li><label>O2O</label></li>
+                            <li><label>互联网房地产</label></li>
+                            <li><label>智能生态</label></li>
+                            <li><label>互联网教育</label></li>
+                            <li><label>互联网医疗</label></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="container-fluid eir-tags-pop eir-hide">
+        <div class="row eir-mytags">
+            <ul class="list-unstyled text-center">
+                <li><label>互联网金融</label></li>
+                <li><label>O2O</label></li>
+                <li><label>互联网房地产</label></li>
+                <li><label>智能生态</label></li>
+                <li><label>互联网教育</label></li>
+                <li><label>互联网医疗</label></li>
+            </ul>
+        </div>
+    </div>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/bootstrap/js/tooltip.js"></script>
+    <script src="../bower_components/bootstrap/js/popover.js"></script>
+    <script src="scripts/home.js"></script>
 </body>
 </html>
 

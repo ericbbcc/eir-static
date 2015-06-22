@@ -1,17 +1,15 @@
 body{
     font-family: proxima-nova, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+@outer-border:#efefef;
+@inside-border:#eeeeee;
+@input-border:#efefef;
+@button-border:#efefef;
 .eir-box1{
     background: #f4f4f4;
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid @outer-border;
 }
-@media (min-width: 950px){
-    .container{
-        width: 950px;
-    }
-}
-
 .eir-form-control{
     display: block;
     width: 100%;
@@ -21,7 +19,7 @@ body{
     line-height: 1.428571429;
     color: #555555;
     vertical-align: middle;
-    border: 1px solid #cccccc;
+    border: 1px solid @outer-border;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -67,11 +65,167 @@ a{
     background: url("../images/pic2.jpg") center center;
     -webkit-background-size: cover;
     background-size: cover;
+    position: relative;
+    nav{
+        margin-bottom: 0px;
+        height: 36px;
+        border: 0px;
+        opacity: 1;
+    }
+    .navbar{
+        min-height: 30px;
+    }
+    .eir-nav{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+    .eir-nav-collapsed{
+        margin-top:0px;
+        margin-bottom: 0px;
+    }
+    .eir-nav-collapsed:hover{
+        margin-top:0px;
+        margin-bottom: 0px;
+        background-color: #000011;
+        filter:alpha(opacity=30);
+        -moz-opacity:0.3;
+        -khtml-opacity: 0.3;
+        opacity: 0.3;
+    }
+    .eir-nav-collapsed:focus{
+        margin-top:0px;
+        margin-bottom: 0px;
+        background-color: #000011;
+        filter:alpha(opacity=30);
+        -moz-opacity:0.3;
+        -khtml-opacity: 0.3;
+        opacity: 0.3;
+    }
 }
 .eir-brand{
-    width: 950px;
+    width: 70%;
     margin: auto;
     color: white;
     padding: 30px 40px;
     font-family: museo-slab,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-align: right;
+}
+
+.eir-tags-pop{
+    z-index: 20;
+    position: absolute;
+    width: 100%;
+    top: 34px;
+    margin: 0px;
+}
+.eir-body{
+    position: relative;
+}
+.eir-hide{
+    display: none;
+}
+.eir-pop-btn{
+    margin: 3px;
+    font-size: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.eir-options .active{
+    position: relative;
+}
+.eir-options .active:after{
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    left: 30px;
+    height: 7px;
+    width: 7px;
+    border: 1px solid @input-border;
+    border-width: 1px 1px 0 0;
+    background: #fff;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.eir-recommend-link{
+    width: 80%;
+    border: 1px solid @input-border;
+    margin-bottom: 5px;
+}
+
+.eir-input-link{
+    line-height:11px;
+    font-size:13px;
+    height:24px;
+    margin-bottom:3px;
+    border: 1px solid @button-border;
+}
+
+
+@media (min-width: 950px){
+    .container{
+        width: 950px;
+    }
+}
+
+@media (max-width: 950px){
+    .eir-brand{
+        width: 90%;
+        margin: auto;
+        color: white;
+        padding: 30px 40px;
+        font-family: museo-slab,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+    .eir-feed-content-content{
+        padding-right: 15px;
+    }
+    .eir-options{
+        padding-left: 5px;
+    }
+    .eir-brand{
+        text-align: center;
+    }
+}
+
+//ipadmin
+@media (min-width: 1024px) {
+    .eir-recommend-link{
+        width: 85%;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .eir-recommend-link{
+        width: 74%;
+        margin-bottom: 5px;
+    }
+    .eir-home-right{
+        display: none;
+    }
+}
+
+//iphone6p
+@media (max-width: 414px) {
+    .eir-recommend-link{
+        width: 80%;
+    }
+}
+
+//iphone6
+@media (max-width: 375px) {
+    .eir-recommend-link{
+        width: 78%;
+    }
+}
+
+
+//iphone4 4s 5
+@media (max-width: 320px) {
+    .eir-recommend-link{
+        width: 74%;
+    }
 }

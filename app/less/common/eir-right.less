@@ -1,7 +1,11 @@
+@outer-border:#efefef;
+@inside-border: #e4e4e4;
+@normal-border: #dbdbdb;
 .eir-profile{
     margin-top: 10px;
     padding: 10px 10px 0px 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #efefef;
+    cursor: pointer;
     .eir-feed-pic{
         float: left;
         img{
@@ -56,16 +60,27 @@
     margin-top: 10px;
     ul{
         cursor: pointer;
-        border: 1px solid #ccc;
+        border: 1px solid @outer-border;
         li{
-            line-height: 1.8em;
-            background-color: #f4f4f4;
-            border-bottom: 1px solid #ccc;
+            background-color: #fbfbfb;
         }
-        li:hover{
-            line-height: 2.0em;
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #ccc;
+        li label {
+            width: 222px;
+            line-height: 2em;
+            border-bottom: 1px solid @inside-border;
+            text-decoration: none;
+            margin: 0px;
+        }
+        li label:hover {
+            width: 222px;
+            line-height: 2.2em;
+            border-bottom: 1px solid @inside-border;
+            text-decoration: none;
+            -webkit-transition: 0.1s;
+            -moz-transition: 0.1s;
+            -ms-transition: 0.1s;
+            -o-transition: 0.1s;
+            transition: 0.1s;
         }
     }
     ul:last-child{

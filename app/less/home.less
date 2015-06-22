@@ -2,12 +2,17 @@
 @import (once) "common/eir-right";
 @import (once) "common/eir-feed";
 
+@outer-border:#efefef;
+@inside-border:#eeeeee;
+@input-border:#efefef;
+@button-border:#efefef;
+
 .eir-tags{
     padding: 5px;
+    border: 1px soli @button-border;
 }
 .eir-options{
     padding-top: 10px;
-    padding-bottom: 5px;
     padding-right: 5px;
     font-size: 12px;
     a{
@@ -16,6 +21,7 @@
 }
 .eir-comments-btn{
     width: 70px;
+    border:1px solid @button-border;
 }
 .eir-home-right{
     margin-left: 20px;
