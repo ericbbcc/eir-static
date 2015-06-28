@@ -235,6 +235,9 @@ a {
 .eir-profile .eir-profile-name-group span {
   display: block;
 }
+.eir-profile .eir-profile-name-group .eir-name:hover {
+  font-weight: bold;
+}
 .eir-profile .eir-feed-count-and-comments {
   padding: 5px 0px;
 }
@@ -254,9 +257,14 @@ a {
   line-height: 45px;
   font-size: 14px;
 }
-.eir-profile .eir-feed-count-and-comments eir {
+.eir-profile .eir-feed-count-and-comments span {
   color: #ffb717;
   font-size: 30px;
+}
+.eir-profile .eir-feed-count-and-comments span:hover {
+  color: #ffb717;
+  font-size: 30px;
+  font-weight: bold;
 }
 .eir-profile .eir-feed-count-and-comments .d {
   float: left;
@@ -267,33 +275,40 @@ a {
 .eir-mytags {
   margin-top: 10px;
 }
-.eir-mytags ul {
+.eir-mytags .eir-ul {
   cursor: pointer;
   border: 1px solid #efefef;
 }
-.eir-mytags ul li {
+.eir-mytags .eir-ul .eir-li {
   background-color: #fbfbfb;
-}
-.eir-mytags ul li label {
-  width: 222px;
   line-height: 2em;
-  border-bottom: 1px solid #eeeeee;
   text-decoration: none;
   margin: 0px;
-}
-.eir-mytags ul li label:hover {
-  width: 222px;
-  line-height: 2.2em;
   border-bottom: 1px solid #eeeeee;
+  cursor: pointer;
+}
+.eir-mytags .eir-ul .eir-li:hover {
+  background-color: #fbfbfb;
+  border-bottom: 1px solid #eeeeee;
+  line-height: 2.2em;
   text-decoration: none;
   -webkit-transition: 0.1s;
   -moz-transition: 0.1s;
   -ms-transition: 0.1s;
   -o-transition: 0.1s;
   transition: 0.1s;
+  cursor: pointer;
 }
-.eir-mytags ul:last-child {
-  border-bottom: 0px;
+.eir-mytags .eir-ul .eir-li:hover label {
+  font-weight: bold;
+}
+.eir-mytags .eir-ul label {
+  margin: 0px;
+  cursor: pointer;
+  font-weight: normal;
+}
+.eir-mytags .eir-ul label.active {
+  font-weight: bold;
 }
 .eir-feed {
   margin-top: 20px;
@@ -329,6 +344,9 @@ a {
   font-weight: 500;
   line-height: 1.1;
   padding: 3px;
+}
+.eir-feed .eir-feed-name:hover {
+  font-weight: bold;
 }
 .eir-feed .eir-feed-summary {
   font-size: 12px;
@@ -383,7 +401,7 @@ a {
   border: 1px solid #efefef;
 }
 .eir-feed .eir-feed-comments-comments:hover {
-  border: 1px solid #cccccc;
+  border: 1px solid #dbdbdb;
 }
 .eir-feed .eir-feed-comments-item {
   margin: 8px 20px;
@@ -447,6 +465,9 @@ a {
   line-height: 1.1;
   padding: 3px;
 }
+.eir-feed:hover .eir-feed-name:hover {
+  font-weight: bold;
+}
 .eir-feed:hover .eir-feed-summary {
   font-size: 12px;
   display: block;
@@ -500,7 +521,7 @@ a {
   border: 1px solid #efefef;
 }
 .eir-feed:hover .eir-feed-comments-comments:hover {
-  border: 1px solid #cccccc;
+  border: 1px solid #dbdbdb;
 }
 .eir-feed:hover .eir-feed-comments-item {
   margin: 8px 20px;
@@ -550,9 +571,53 @@ a {
   padding-left: 5px;
   border: 1px solid #e2e2e2;
 }
+.feed-end {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 13px;
+  color: #dbdbdb;
+}
+.eir-login {
+  margin-top: 10px;
+  padding: 10px 10px 10px 10px;
+  border: 1px solid #efefef;
+  cursor: pointer;
+}
+.eir-login .eir-login-form .input-prepend {
+  padding: 5px;
+}
+.eir-login .eir-login-form input {
+  border: 1px solid #eeeeee;
+  width: 186px;
+  padding: 2px;
+  line-height: 1.5em;
+  padding-left: 5px;
+}
+.eir-login .eir-login-title {
+  padding-bottom: 5px;
+  text-align: center;
+  font-size: 13px;
+}
+[placeholder] {
+  font-family: proxima-nova, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+::-moz-placeholder {
+  color: #CCC;
+  opacity: 1!important;
+  font-size: 13px;
+}
+:-ms-input-placeholder {
+  color: #CCC;
+  font-size: 13px;
+}
+::-webkit-input-placeholder {
+  color: #CCC;
+  font-size: 13px;
+}
 .eir-tags {
   padding: 5px;
-  border: 1px soli #efefef;
+  border: 1px solid #efefef;
 }
 .eir-options {
   padding-top: 10px;

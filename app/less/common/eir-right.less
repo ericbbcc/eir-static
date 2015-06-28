@@ -25,6 +25,9 @@
         span{
             display: block;
         }
+        .eir-name:hover{
+            font-weight: bold;
+        }
     }
     .eir-feed-count-and-comments{
         padding: 5px 0px;
@@ -44,9 +47,14 @@
             line-height: 45px;
             font-size: 14px;
         }
-        eir{
+        span{
             color: #ffb717;
             font-size: 30px;
+        }
+        span:hover{
+            color: #ffb717;
+            font-size: 30px;
+            font-weight: bold;
         }
         .d{
             float: left;
@@ -58,32 +66,39 @@
 }
 .eir-mytags{
     margin-top: 10px;
-    ul{
+    .eir-ul{
         cursor: pointer;
         border: 1px solid @outer-border;
-        li{
+        .eir-li{
             background-color: #fbfbfb;
-        }
-        li label {
-            width: 222px;
             line-height: 2em;
-            border-bottom: 1px solid @inside-border;
             text-decoration: none;
             margin: 0px;
-        }
-        li label:hover {
-            width: 222px;
-            line-height: 2.2em;
             border-bottom: 1px solid @inside-border;
+            cursor: pointer;
+        }
+        .eir-li:hover{
+            background-color: #fbfbfb;
+            border-bottom: 1px solid @inside-border;
+            line-height: 2.2em;
             text-decoration: none;
             -webkit-transition: 0.1s;
             -moz-transition: 0.1s;
             -ms-transition: 0.1s;
             -o-transition: 0.1s;
             transition: 0.1s;
+            cursor: pointer;
+            label{
+                font-weight: bold;
+            }
         }
-    }
-    ul:last-child{
-        border-bottom: 0px;
+        label{
+            margin:0px;
+            cursor: pointer;
+            font-weight: normal;
+        }
+        label.active{
+            font-weight: bold;
+        }
     }
 }
