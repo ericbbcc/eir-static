@@ -5,7 +5,9 @@ require.config({
         "jquery" : "bower_components/jquery/dist/jquery",
         "tooltip" : "bower_components/bootstrap/js/tooltip",
         "popover" : "bower_components/bootstrap/js/popover",
-        "API" : "scripts/API"
+        "underscore" : "bower_components/underscore/underscore-min",
+        "API" : "scripts/API",
+        "templates" : "scripts/templates"
     },
     shim:{
         "jquery":{
@@ -15,22 +17,51 @@ require.config({
         "popover" : ["tooltip"]
     }
 });
-
+var data = undefined;
 //模块入口
-require(["API","jquery","tooltip","popover"], function(API, $){
-
+require(["API","jquery","underscore","templates","tooltip","popover"], function(API, $, _, templates){
+    var _startOff = 1;
     $(window).scroll(function(){
-        //如果要以顶部50像素，可将if()里面的条件改为: $(document).scrollTop() > 50
-        // 当滚动到最底部以上50像素时， 加载新内容
         if (($(document).height() - $(this).scrollTop() - $(this).height()) < 50){
-            console.log('the end');
+            $.post(API.moreFeed,{
+                startOff:_startOff
+            },function(data){
+
+            });
         }
     });
+
+    _.each(data.msg.feeds, function(data){
+       var compiled =  _.template(templates.feedTemplate);
+        $('.feed-container').append(compiled(data));
+    });
+
+    //删除Feed
+    window.currentDeleteFeedId = undefined;
+    window.currentPopover = undefined;
+    window.removeFeed = function(){
+        $.ajax({
+            type : "POST",
+            url : API.deleteFeed,
+            data:{feedId:window.currentDeleteFeedId},
+            success:function(data){
+                window.currentPopover.popover('hide');
+            },
+            error:function(){
+                window.currentPopover.popover('hide');
+            }
+        });
+    }
+    window.cancelPopover = function(){
+        if(window.currentPopover != undefined){
+            window.currentPopover.popover('hide');
+        }
+    }
 
     //popover组件
     var popoverOps = {
         title:'是否确认删除？',
-        content:"<a class='btn btn-danger eir-pop-btn'>确定</a><a class='btn btn-default eir-pop-btn'>取消</a>",
+        content:"<a class='btn btn-danger eir-pop-btn' onclick=\"removeFeed();\">确定</a><a class='btn btn-default eir-pop-btn' onclick=\"cancelPopover();\" >取消</a>",
         html:true,
         template:'<div class="popover" role="tooltip">' +
         '<div class="arrow">' +
@@ -94,6 +125,47 @@ require(["API","jquery","tooltip","popover"], function(API, $){
             function linkFeedCallback(data){
 
             }
+        },
+        deleteFeedHandler : function deleteFeedHandler(){
+                window.currentDeleteFeedId = $(this).closest('.eir-feed').data('feedid');
+                window.currentPopover = $(this);
+        },
+        likeFeedHandler : function likeFeedHandler(){
+            var _feedId = $(this).closest('.eir-feed').data('feedid');
+            $.ajax({
+                type:'POST',
+                url:API.addLike,
+                data:{feedId:_feedId},
+                success:function(data){
+
+                },
+                error:function(){
+
+                }
+            });
+        },
+        dellikeFeedHandler : function likeFeedHandler(){
+            var _feedId = $(this).closest('.eir-feed').data('feedid');
+            $.ajax({
+                type:'POST',
+                url:API.delLike,
+                data:{feedId:_feedId},
+                success:function(data){
+
+                },
+                error:function(){
+
+                }
+            });
+        },
+        feedCommentFocusInHandler : function(){
+            var compiled =  _.template(templates.feedCommentMore);
+            $(this).closest('.eir-feed-comments').replaceWith(compiled({})).fadeIn(1000);
+        },
+        getMoreFeedCommentsHandler  : function(){
+            var _lastIndex = 1;
+            var _feedId=1;
+
         }
     };
     //################################事件处理器配置END#######################################
@@ -105,6 +177,74 @@ require(["API","jquery","tooltip","popover"], function(API, $){
     $('#recommend-link').click(HANDLERS.recommendLinkOnClickHandler);
     $('.eir-mytags .eir-li').click(HANDLERS.clickTagHandler);
     $('.eir-comments-btn').click(HANDLERS.commentsOnClickHandler);//发表说说
+    $('.eir-feed a[deleteFeed]').click(HANDLERS.deleteFeedHandler);//删除Feed
+    $('.eir-feed .eir-feed-options .icon-thumbs-up.unliked a').click(HANDLERS.likeFeedHandler);//Feed点赞
+    $('.eir-feed .eir-feed-options .icon-thumbs-up.liked a').click(HANDLERS.dellikeFeedHandler);//取消Feed点赞
+    $('.eir-feed-comments').focusin(HANDLERS.feedCommentFocusInHandler);//评论数据框聚焦
+    $('.eir-get-more-comments .a-more-comments').click(HANDLERS.getMoreFeedCommentsHandler);//获取更多评论
     //################################事件配置END#######################################
 
 });
+
+data = {
+    code: 200,
+    msg:{
+        lastFeedIndex:1,//当前页最后一个Feed索引
+        totalFeedCount:111,//总Feed数
+        feeds: [
+            {
+                feedId: 123,
+                feedType: 0,
+                msgBody: {
+                    msgId: 666,
+                    title:"猫眼格瓦拉百度淘宝们怎么打?",
+                    content: "在已经大幕拉开的暑期档，价格补贴的恶战会再次重燃，到 年底究竟还能留下谁呢?",
+                    "link": "http: //***"
+                },
+                "author": {
+                    "userId": 123456,
+                    "realName": "Cheng",
+                    "jobTiltle": "CEO",
+                    "company": "huhaha",
+                    "avatarUrl": "/images/pic1.jpeg"
+                },
+                comments:{
+                    feedId:123,
+                    lastIndex:2,
+                    totalCount:111,
+                    data:[
+                        {
+                            commentId:1,
+                            userPic:"/images/pic1.jpeg",//作者头像图片
+                            userId:1,//作者ID
+                            userName:"float.lu",//作者名字
+                            toUserPic:"/images/pic1.jpeg",//被@的作者图片
+                            toUserId:123,//被@的作者
+                            toUserName:"cheng",//被@的作者名字
+                            content:"不错哟",//评论内容
+                            commentTime:"2015-6-15"
+                        },
+                        {
+                            commentId:1,
+                            userPic:"/images/pic1.jpeg",//作者头像图片
+                            userId:123,//作者ID
+                            userName:"cheng",//作者名字
+                            toUserPic:"/images/pic1.jpeg",//被@的作者图片
+                            toUserId:1,//被@的作者
+                            toUserName:"cheng",//被@的作者名字
+                            content:"不错哟",//评论内容
+                            commentTime:"2015-6-16"
+                        }
+                    ]
+                },
+                "addTime": "2015-6-15",
+                "commentCount": 0,
+                "likeCount": 0,
+                "tag": "O2O",
+                tagId:1,//标签ID
+                isLiked:"true"//是否已赞
+            }
+        ]
+    }
+
+};

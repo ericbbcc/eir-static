@@ -1,0 +1,56 @@
+@outer-border:#efefef;
+@inside-border: #e4e4e4;
+@normal-border: #dbdbdb;
+.eir-reg{
+    margin-top: 20px;
+    padding: 20px 10px 10px 10px;
+    cursor: pointer;
+    .eir-reg-form{
+        .input-prepend{
+            padding: 5px;
+        }
+        input[type=text]{
+            border: 1px solid @inside-border;
+            width: 230px;
+            padding: 2px;
+            line-height: 25px;
+            padding-left:5px;
+        }
+        input[type=password],input[id=reg]{
+            border: 1px solid @inside-border;
+            width: 230px;
+            padding: 2px;
+            line-height: 25px;
+            padding-left:5px;
+        }
+        .radio-label{
+            font-weight: normal;
+            padding: 3px;
+        }
+        .radio-box{
+            width: 25%;
+            display: inline-block;
+        }
+    }
+    .eir-reg-title{
+        padding-bottom:5px;
+        text-align: center;
+        font-size: 13px;
+    }
+}
+.eir-alert{
+    width: 230px;
+    margin: auto;
+}
+@media (max-width: 950px){
+    .reg-left-img-container{
+        display: none;
+    }
+}
+.eir-reg-success{
+    margin-top: 100px;
+    padding: 60px 10px 10px 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ffb717;
+}

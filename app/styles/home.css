@@ -272,6 +272,16 @@ a {
   padding: 3px;
   display: inline-block;
 }
+.eir-profile .logout {
+  border: 0px solid #eeeeee;
+  margin-top: 5px;
+  position: absolute;
+  right: 0px;
+  padding: 5px 10px 5px 10px;
+  -webkit-border-radius: 17px;
+  -moz-border-radius: 17px;
+  border-radius: 17px;
+}
 .eir-mytags {
   margin-top: 10px;
 }
@@ -416,11 +426,19 @@ a {
 .eir-feed .eir-feed-comments-item-content .eir-feed-comments-item-content-name {
   font-size: 12px;
 }
+.eir-feed .eir-feed-comments-item-content .eir-feed-comments-item-content-name span {
+  display: inline-block;
+}
 .eir-feed .eir-feed-comments-item-content .eir-feed-comments-item-content-time {
   font-size: 12px;
 }
 .eir-feed .eir-feed-comments-item-content .eir-feed-comments-item-content-time d {
   color: #888888;
+}
+.eir-feed .eir-feed-item-container .eir-get-more-comments {
+  font-size: 12px;
+  text-align: center;
+  font-weight: normal;
 }
 .eir-feed:hover {
   margin-top: 20px;
@@ -536,11 +554,19 @@ a {
 .eir-feed:hover .eir-feed-comments-item-content .eir-feed-comments-item-content-name {
   font-size: 12px;
 }
+.eir-feed:hover .eir-feed-comments-item-content .eir-feed-comments-item-content-name span {
+  display: inline-block;
+}
 .eir-feed:hover .eir-feed-comments-item-content .eir-feed-comments-item-content-time {
   font-size: 12px;
 }
 .eir-feed:hover .eir-feed-comments-item-content .eir-feed-comments-item-content-time d {
   color: #888888;
+}
+.eir-feed:hover .eir-feed-item-container .eir-get-more-comments {
+  font-size: 12px;
+  text-align: center;
+  font-weight: normal;
 }
 .eir-feed:hover .eir-feed-content {
   background-color: #FFFFFF;
@@ -598,6 +624,11 @@ a {
   padding-bottom: 5px;
   text-align: center;
   font-size: 13px;
+}
+.go-reg {
+  font-size: 12px;
+  text-align: right;
+  padding-right: 10px;
 }
 [placeholder] {
   font-family: proxima-nova, 'Helvetica Neue', Helvetica, Arial, sans-serif;
